@@ -646,11 +646,11 @@ footer {
   }
 }
 
-/* User controls in header */
+/* User controls in header - positioned to leave room for theme toggle */
 #user-controls {
   position: absolute;
   top: 10px;
-  right: 15px;
+  right: calc(48px + 22px); /* theme toggle min-width + spacing */
 }
 
 #user-status {
@@ -720,9 +720,4 @@ footer {
 
 #theme-toggle:hover {
   background-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Adjust user controls position to make room for theme toggle */
-#user-controls {
-  right: calc(48px + 22px); /* theme toggle min-width + spacing */
 }
