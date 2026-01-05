@@ -3,24 +3,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeToggle = document.getElementById("theme-toggle");
   const themeIcon = document.getElementById("theme-icon");
 
-  // Check for saved theme preference or default to light mode
-  const currentTheme = localStorage.getItem("theme") || "light";
-  if (currentTheme === "dark") {
-    document.body.classList.add("dark-mode");
-    themeIcon.textContent = "☀️";
-  }
+  // Only initialize theme toggle if elements exist
+  if (themeToggle && themeIcon) {
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem("theme") || "light";
+    if (currentTheme === "dark") {
+      document.body.classList.add("dark-mode");
+      themeIcon.textContent = "☀️";
+    }
 
-  // Toggle theme
-  themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    const isDarkMode = document.body.classList.contains("dark-mode");
-    
-    // Update icon
-    themeIcon.textContent = isDarkMode ? "☀️" : "🌙";
-    
-    // Save preference to localStorage
-    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-  });
+    // Toggle theme
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const isDarkMode = document.body.classList.contains("dark-mode");
+      
+      // Update icon
+      themeIcon.textContent = isDarkMode ? "☀️" : "🌙";
+      
+      // Save preference to localStorage
+      localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+    });
+  }
 
   // DOM elements
   const activitiesList = document.getElementById("activities-list");

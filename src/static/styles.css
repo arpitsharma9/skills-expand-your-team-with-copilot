@@ -715,13 +715,14 @@ footer {
   display: flex;
   align-items: center;
   gap: 5px;
+  min-width: 48px;
 }
 
 #theme-toggle:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Adjust user controls position when theme toggle is present */
+/* Adjust user controls position to make room for theme toggle */
 #user-controls {
-  right: 70px;
+  right: calc(48px + 22px); /* theme toggle min-width + spacing */
 }
