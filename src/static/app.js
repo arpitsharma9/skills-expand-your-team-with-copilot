@@ -554,15 +554,15 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="share-buttons">
         <span class="share-label">Share:</span>
-        <button class="share-button share-twitter tooltip" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" data-schedule="${formattedSchedule.replace(/"/g, '&quot;')}" aria-label="Share on Twitter">
+        <button class="share-button share-twitter tooltip" aria-label="Share on Twitter">
           🐦
           <span class="tooltip-text">Share on Twitter</span>
         </button>
-        <button class="share-button share-facebook tooltip" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" data-schedule="${formattedSchedule.replace(/"/g, '&quot;')}" aria-label="Share on Facebook">
+        <button class="share-button share-facebook tooltip" aria-label="Share on Facebook">
           👍
           <span class="tooltip-text">Share on Facebook</span>
         </button>
-        <button class="share-button share-email tooltip" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" data-schedule="${formattedSchedule.replace(/"/g, '&quot;')}" aria-label="Share via Email">
+        <button class="share-button share-email tooltip" aria-label="Share via Email">
           ✉️
           <span class="tooltip-text">Share via Email</span>
         </button>
@@ -607,9 +607,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const shareFacebookButton = activityCard.querySelector(".share-facebook");
     const shareEmailButton = activityCard.querySelector(".share-email");
 
-    shareTwitterButton.addEventListener("click", () => handleShare("twitter", name, details));
-    shareFacebookButton.addEventListener("click", () => handleShare("facebook", name, details));
-    shareEmailButton.addEventListener("click", () => handleShare("email", name, details));
+    if (shareTwitterButton) {
+      shareTwitterButton.addEventListener("click", () => handleShare("twitter", name, details));
+    }
+    if (shareFacebookButton) {
+      shareFacebookButton.addEventListener("click", () => handleShare("facebook", name, details));
+    }
+    if (shareEmailButton) {
+      shareEmailButton.addEventListener("click", () => handleShare("email", name, details));
+    }
 
     activitiesList.appendChild(activityCard);
   }
